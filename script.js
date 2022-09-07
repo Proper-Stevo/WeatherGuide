@@ -1,12 +1,14 @@
 var input = document.querySelector('#inputBtn');
 var button = document.querySelector('#searchBtn');
+var displayOne = document.querySelector('.firstInput');
+var displayTwo = document.querySelector('.fiveDayInput');
 
 
 
 function seachBar(event) {
     event.preventDefault();
     console.log(input.value);
-    var api = 'https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&current.uvi&appid=76dac667dc0c7f08796594217df02e49&units=imperial';
+    var api = 'https://api.openweathermap.org/data/2.5/onecall?q=' + input.value + '&appid=a92be1494d3c0baec600da80d7ff753c&units=imperial';
     fetch(api)
     console.log(api);
 
@@ -21,7 +23,16 @@ function seachBar(event) {
             console.log("tempature: ", data.main.temp)
             console.log("humidity: ", data.main.humidity)
             console.log("name: ", data.name)
-            // console.log("UV Index: ", data.current.uvi)
+            var nombre = document.createElement("h2")
+            nombre.textContent = "Location: " + data.name
+            displayOne.appendChild(nombre)
+            var hum = document.createElement("h4")
+            hum.textContent = "Humidity: " + data.main.humidity
+            displayOne.appendChild(hum)
+            var temp = document.createElement("h4")
+            temp.textContent = "Tempature: " + data.main.temp
+            displayOne.appendChild(temp)
+            
          // storage should go in here, using the "input.value"
 
             var secondApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data.coord.lat + '&lon=' + data.coord.lon + '&exclude=hourly,daily,minutely,alerts&units=imperial&appid=cfe0b2658aec5af16bf8115cfd986eca'
@@ -35,6 +46,11 @@ function seachBar(event) {
                 .then(function (data) {
                     console.log(data)
                     console.log("UV Index: ", data.current.uvi)
+                    var uv = document.createElement("h4")
+                    temp.textContent = "UV Index: " + data.current.uvi
+                    displayOne.appendChild(uv)
+
+                    // take out all information to display
 
                 })
         })
