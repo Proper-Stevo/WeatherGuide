@@ -8,7 +8,7 @@ var displayTwo = document.querySelector('.fiveDayInput');
 function seachBar(event) {
     event.preventDefault();
     console.log(input.value);
-    var api = 'https://api.openweathermap.org/data/2.5/onecall?q=' + input.value + '&appid=a92be1494d3c0baec600da80d7ff753c&units=imperial';
+    var api = 'https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&units=imperial&appid=a92be1494d3c0baec600da80d7ff753c';
     fetch(api)
     console.log(api);
 
