@@ -35,3 +35,7 @@ https://github.com/Proper-Stevo/WeatherGuide
 
 Project Page: 
 https://proper-stevo.github.io/WeatherGuide/
+
+## Image
+
+![alt text](https://github.com/Proper-Stevo/WeatherGuide/blob/main/Working%20Page.png)
