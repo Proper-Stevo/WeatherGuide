@@ -7,12 +7,6 @@
     padding: 0;
     font-size: 30px;
 }
-/* 
-body {
-    margin: auto;
-    color: black;
-    background-color: lightgray;
-} */
 
 header {
     padding: 20px;
@@ -57,6 +51,7 @@ section {
     display: flex;
     flex-direction: row;
     padding-left: 225px;
+    contain: content;
 }
 .box {
      background-color: blue;
@@ -64,5 +59,35 @@ section {
      height: 200px;
      margin: 10px;
      color: var(--white);
+     contain: content;
         
+}
+#icon {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+#icon2 {
+    width: 50px;
+    height: 50px;
+}
+
+#icon3 {
+    width: 50px;
+    height: 50px;
+}
+
+#icon4 {
+    width: 50px;
+    height: 50px;
+}
+
+#icon5 {
+    width: 50px;
+    height: 50px;
+}
+
+#icon6 {
+    width: 50px;
+    height: 50px;
 }

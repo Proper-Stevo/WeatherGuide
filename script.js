@@ -6,8 +6,7 @@ var displayThree = document.querySelector('#second');
 var displayFour = document.querySelector('#third');
 var displayFive = document.querySelector('#fourth');
 var displaySix = document.querySelector('#fifth');
-
-
+var date = moment().format("MMM Do YY");
 
 
 function seachBar(event) {
@@ -16,27 +15,28 @@ function seachBar(event) {
     var api = 'https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&units=imperial&appid=a92be1494d3c0baec600da80d7ff753c';
     fetch(api)
     console.log(api);
-    // var icons = 'http://openweathermap.org/img/wn/10d@2x.png'
+
 
     fetch(api)
         .then(function (response) {
             return response.json()
 
 
-        })
+        }) 
         .then(function (data) {
+            let icon = document.getElementById('icon').src =`http://openweathermap.org/img/w/` + data.weather[0].icon + `.png`;
             console.log(data)
             console.log("tempature: ", data.main.temp)
             console.log("humidity: ", data.main.humidity)
             console.log("name: ", data.name)
             var nombre = document.createElement("h2")
-            nombre.textContent = "Location: " + data.name 
+            nombre.textContent = "Location: " + data.name
             displayOne.appendChild(nombre)
             var temp = document.createElement("h4")
-            temp.textContent = "Temperature: " + data.main.temp + data.weather[0].icon
+            temp.textContent = "Temperature: " + data.main.temp 
             displayOne.appendChild(temp)
             var hum = document.createElement("h4")
-            hum.textContent = "Humidity: " + data.main.humidity
+            hum.textContent = "Humidity: " + data.main.humidity + "%"
             displayOne.appendChild(hum)
             
             
@@ -59,20 +59,25 @@ function seachBar(event) {
                     displayOne.appendChild(uv)
 
                     // take out all information to display
+                    let icon2 = document.getElementById('icon2').src =`http://openweathermap.org/img/w/` + data.daily[0].weather[0].icon + `.png`;
                     var firstDay = document.createElement("h3")
-                    firstDay.textContent = "Temperature: " + data.daily[0].temp.max 
+                    firstDay.textContent = date + '\n' + "Temp: " + data.daily[0].temp.max + " \n Humidity: " + data.daily[0].humidity + "%"
                     displayTwo.appendChild(firstDay)
+                    let icon3 = document.getElementById('icon3').src =`http://openweathermap.org/img/w/` + data.daily[1].weather[0].icon + `.png`;
                     var secondDay = document.createElement("h3")
-                    secondDay.textContent = "Temperature: " + data.daily[1].temp.max
+                    secondDay.textContent = date + '\n' + "Temp:" + data.daily[1].temp.max  + "\n Humidity:" + data.daily[1].humidity + "%"
                     displayThree.appendChild(secondDay)
+                    let icon4 = document.getElementById('icon4').src =`http://openweathermap.org/img/w/` + data.daily[2].weather[0].icon + `.png`;
                     var thirdDay = document.createElement("h3")
-                    thirdDay.textContent = "Temperature: " + data.daily[2].temp.max 
+                    thirdDay.textContent = date + '\n' + "Temp:" + data.daily[2].temp.max  + "\n Humidity:" + data.daily[2].humidity + "%"
                     displayFour.appendChild(thirdDay)
+                    let icon5 = document.getElementById('icon5').src =`http://openweathermap.org/img/w/` + data.daily[3].weather[0].icon + `.png`;
                     var fourthDay = document.createElement("h3")
-                    fourthDay.textContent = "Temperature: " + data.daily[3].temp.max 
+                    fourthDay.textContent = date + '\n' + "Temp:" + data.daily[3].temp.max  + "\n Humidity:" + data.daily[3].humidity + "%"
                     displayFive.appendChild(fourthDay)
+                    let icon6 = document.getElementById('icon6').src =`http://openweathermap.org/img/w/` + data.daily[4].weather[0].icon + `.png`;
                     var fifthDay = document.createElement("h3")
-                    fifthDay.textContent = "Temperature: " + data.daily[4].temp.max 
+                    fifthDay.textContent = date + '\n' + "Temp:" + data.daily[4].temp.max  + "\n Humidity:" + data.daily[4].humidity + "%"
                     displaySix.appendChild(fifthDay)
                 })
         })
