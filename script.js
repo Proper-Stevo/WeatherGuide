@@ -24,13 +24,13 @@ function seachBar(event) {
 
         }) 
         .then(function (data) {
-            let icon = document.getElementById('icon').src =`http://openweathermap.org/img/w/` + data.weather[0].icon + `.png`;
             console.log(data)
             console.log("tempature: ", data.main.temp)
             console.log("humidity: ", data.main.humidity)
             console.log("name: ", data.name)
             var nombre = document.createElement("h2")
             nombre.textContent = "Location: " + data.name
+            let icon = document.getElementById('icon').src =`http://openweathermap.org/img/w/` + data.weather[0].icon + `.png`;
             displayOne.appendChild(nombre)
             var temp = document.createElement("h4")
             temp.textContent = "Temperature: " + data.main.temp 
@@ -39,7 +39,9 @@ function seachBar(event) {
             hum.textContent = "Humidity: " + data.main.humidity + "%"
             displayOne.appendChild(hum)
             
-            
+
+            let myPastCities = JSON.parse(localStorage.getItem(input.value));
+            localStorage.setItem(input.value, myPastCities);
             
          // storage should go in here, using the "input.value"
 
